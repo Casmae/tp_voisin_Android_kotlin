@@ -1,13 +1,14 @@
-package fr.mbds.android.neighbors.data.service
+package fr.mbds.android.dal.room
 
-import fr.mbds.android.neighbors.models.Neighbor
+import androidx.lifecycle.LiveData
+import fr.mbds.android.models.Neighbor
 
-interface NeighborApiService {
+interface NeighborDatasource {
     /**
      * Get all my Neighbors
      * @return [List]
      */
-    val neighbours: List<Neighbor>
+    val neighbours: LiveData<List<Neighbor>>
 
     /**
      * Deletes a neighbor

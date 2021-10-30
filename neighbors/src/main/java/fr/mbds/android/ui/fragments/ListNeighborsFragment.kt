@@ -1,5 +1,6 @@
-package fr.mbds.android.neighbors.fragments
+package fr.mbds.android.ui.fragments
 
+import android.app.Application
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,19 +9,20 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import fr.mbds.android.NavigationListener
+import fr.mbds.android.adapters.ListNeighborHandler
+import fr.mbds.android.adapters.ListNeighborsAdapter
+import fr.mbds.android.models.Neighbor
 import fr.mbds.android.neighbors.R
-import fr.mbds.android.neighbors.adapters.ListNeighborHandler
-import fr.mbds.android.neighbors.adapters.ListNeighborsAdapter
-import fr.mbds.android.neighbors.data.NeighborRepository
-import fr.mbds.android.neighbors.models.Neighbor
+import fr.mbds.android.neighbors.databinding.ListNeighborsFragmentBinding
+import fr.mbds.android.repositories.NeighborRepository
 
 class ListNeighborsFragment : Fragment(), ListNeighborHandler {
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var addNeighbor: FloatingActionButton
+    private var _binding: ListNeighborsFragmentBinding? = null
 
+    private val binding get() = _binding!!
     /**
      * Fonction permettant de définir une vue à attacher à un fragment
      */
@@ -29,7 +31,10 @@ class ListNeighborsFragment : Fragment(), ListNeighborHandler {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.list_neighbors_fragment, container, false)
+
+        _binding = ListNeighborsFragmentBinding.inflate(inflater, container, false)
+        val view = binding.root
+
         recyclerView = view.findViewById(R.id.neighbors_list)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.addItemDecoration(
@@ -43,8 +48,7 @@ class ListNeighborsFragment : Fragment(), ListNeighborHandler {
             it.updateTitle(R.string.listNeighbors_title)
         }
 
-        addNeighbor = view.findViewById(R.id.addNeighbor)
-        addNeighbor.setOnClickListener {
+        _binding!!.addNeighbor.setOnClickListener {
             (activity as? NavigationListener)?.let {
                 it.showFragment(AddNeighbourFragment())
             }
@@ -55,15 +59,24 @@ class ListNeighborsFragment : Fragment(), ListNeighborHandler {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val neighbors = NeighborRepository.getInstance().getNeighbours()
-        val adapter = ListNeighborsAdapter(neighbors, this)
-        recyclerView.adapter = adapter
+
+        setData()
     }
 
     override fun onDeleteNeighbor(neighbor: Neighbor) {
-        NeighborRepository.getInstance().deleteNeighbour(neighbor)
-        val neighbors = NeighborRepository.getInstance().getNeighbours()
-        val adapter = ListNeighborsAdapter(neighbors, this)
-        recyclerView.adapter = adapter
+        val application: Application = activity?.application ?: return
+
+        NeighborRepository.getInstance(application).delete(neighbor)
+    }
+
+    private fun setData() {
+        // Récupérer l'instance de l'application, si elle est null arrêter l'exécution de la méthode
+        val application: Application = activity?.application ?: return
+
+        val neighbors = NeighborRepository.getInstance(application).getNeighbours()
+        neighbors.observe(viewLifecycleOwner) {
+            val adapter = ListNeighborsAdapter(it, this)
+            binding.neighborsList.adapter = adapter
+        }
     }
 }

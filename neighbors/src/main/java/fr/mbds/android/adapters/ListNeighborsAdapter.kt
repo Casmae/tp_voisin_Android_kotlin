@@ -1,4 +1,4 @@
-package fr.mbds.android.neighbors.adapters
+package fr.mbds.android.adapters
 
 import android.app.AlertDialog
 import android.view.LayoutInflater
@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import fr.mbds.android.neighbors.R
-import fr.mbds.android.neighbors.models.Neighbor
+import fr.mbds.android.models.Neighbor
 
 class ListNeighborsAdapter(
     items: List<Neighbor>,

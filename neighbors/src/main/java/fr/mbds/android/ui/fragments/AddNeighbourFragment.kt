@@ -1,5 +1,6 @@
-package fr.mbds.android.neighbors.fragments
+package fr.mbds.android.ui.fragments
 
+import android.app.Application
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
@@ -13,9 +14,9 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import fr.mbds.android.NavigationListener
+import fr.mbds.android.models.Neighbor
 import fr.mbds.android.neighbors.R
-import fr.mbds.android.neighbors.data.NeighborRepository
-import fr.mbds.android.neighbors.models.Neighbor
+import fr.mbds.android.repositories.NeighborRepository
 
 class AddNeighbourFragment : Fragment(), TextWatcher {
 
@@ -49,7 +50,6 @@ class AddNeighbourFragment : Fragment(), TextWatcher {
         addNeighbor.setOnClickListener {
 
             // On récupère la taille de la liste des voisins pour incrémenter automatiquement l'ID
-            val newNeighborId = NeighborRepository.getInstance().getNeighbours().size + 1
 
             val image: String = image.text.toString()
             val name: String = name.text.toString()
@@ -59,7 +59,7 @@ class AddNeighbourFragment : Fragment(), TextWatcher {
             val aboutMe: String = aboutMe.text.toString()
 
             val newNeighbour = Neighbor(
-                id = newNeighborId.toLong(),
+                id = 0,
                 name = name,
                 address = address,
                 phoneNumber = phone,
@@ -68,8 +68,8 @@ class AddNeighbourFragment : Fragment(), TextWatcher {
                 avatarUrl = image,
                 favorite = false
             )
-            NeighborRepository.getInstance().createNeighbour(newNeighbour)
 
+            createNeighbour(newNeighbour)
             (activity as? NavigationListener)?.let {
                 it.showFragment(ListNeighborsFragment())
             }
@@ -125,15 +125,15 @@ class AddNeighbourFragment : Fragment(), TextWatcher {
 
         addNeighbor.isEnabled =
             image_not_null &&
-            name_not_null &&
-            phone_not_null &&
-            website_not_null &&
-            addressMai_not_null &&
-            aboutMe_not_null &&
-            emailValid &&
-            phoneNumberValid &&
-            imageUrlValid &&
-            websiteUrlValid
+                    name_not_null &&
+                    phone_not_null &&
+                    website_not_null &&
+                    addressMai_not_null &&
+                    aboutMe_not_null &&
+                    emailValid &&
+                    phoneNumberValid &&
+                    imageUrlValid &&
+                    websiteUrlValid
     }
 
     fun isValidEmail(target: CharSequence?): Boolean {
@@ -142,15 +142,21 @@ class AddNeighbourFragment : Fragment(), TextWatcher {
 
     fun isValidPhoneNumber(target: CharSequence?): Boolean {
         return (
-            (
-                (target.toString()).startsWith("07") ||
-                    (target.toString()).startsWith("06")
-                ) &&
-                target.toString().length == 10
-            )
+                (
+                        (target.toString()).startsWith("07") ||
+                                (target.toString()).startsWith("06")
+                        ) &&
+                        target.toString().length == 10
+                )
     }
 
     fun isValidUrl(target: CharSequence?): Boolean {
         return URLUtil.isValidUrl(target.toString())
+    }
+
+    fun createNeighbour(neighbor: Neighbor) {
+        val application: Application = activity?.application ?: return
+
+        NeighborRepository.getInstance(application).createNeighbour(neighbor)
     }
 }

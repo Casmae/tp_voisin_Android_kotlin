@@ -1,4 +1,4 @@
-package fr.mbds.android.neighbors.models
+package fr.mbds.android.models
 
 data class Neighbor(
     val id: Long,
