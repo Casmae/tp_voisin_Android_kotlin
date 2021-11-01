@@ -3,6 +3,7 @@ package fr.mbds.android.dal.room
 import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
+import fr.mbds.android.dal.NeighborDatasource
 import fr.mbds.android.dal.room.daos.NeighborDao
 import fr.mbds.android.models.Neighbor
 import toNeighbor

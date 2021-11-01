@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,12 +17,13 @@ import fr.mbds.android.models.Neighbor
 import fr.mbds.android.neighbors.R
 import fr.mbds.android.neighbors.databinding.ListNeighborsFragmentBinding
 import fr.mbds.android.repositories.NeighborRepository
+import fr.mbds.android.viewmodels.RepositoryViewModel
 
 class ListNeighborsFragment : Fragment(), ListNeighborHandler {
 
     private lateinit var recyclerView: RecyclerView
     private var _binding: ListNeighborsFragmentBinding? = null
-
+    private lateinit var viewModel: RepositoryViewModel
     private val binding get() = _binding!!
     /**
      * Fonction permettant de définir une vue à attacher à un fragment
@@ -31,7 +33,7 @@ class ListNeighborsFragment : Fragment(), ListNeighborHandler {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+        viewModel = ViewModelProvider(this).get(RepositoryViewModel::class.java)
         _binding = ListNeighborsFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
 
@@ -73,8 +75,7 @@ class ListNeighborsFragment : Fragment(), ListNeighborHandler {
         // Récupérer l'instance de l'application, si elle est null arrêter l'exécution de la méthode
         val application: Application = activity?.application ?: return
 
-        val neighbors = NeighborRepository.getInstance(application).getNeighbours()
-        neighbors.observe(viewLifecycleOwner) {
+        viewModel.neighbors.observe(viewLifecycleOwner) {
             val adapter = ListNeighborsAdapter(it, this)
             binding.neighborsList.adapter = adapter
         }

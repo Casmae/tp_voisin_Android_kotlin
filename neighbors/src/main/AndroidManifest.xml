@@ -13,7 +13,7 @@
         android:theme="@style/Theme.MaterialComponents.NoActionBar"
         >
 
-        <activity android:name=".MainActivity"
+        <activity android:name="fr.mbds.android.ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

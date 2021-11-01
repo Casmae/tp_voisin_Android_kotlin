@@ -1,4 +1,4 @@
-package fr.mbds.android.dal.room
+package fr.mbds.android.dal
 
 import androidx.lifecycle.LiveData
 import fr.mbds.android.models.Neighbor

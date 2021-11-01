@@ -2,7 +2,7 @@ package fr.mbds.android.dal.memory
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import fr.mbds.android.dal.room.NeighborDatasource
+import fr.mbds.android.dal.NeighborDatasource
 import fr.mbds.android.models.Neighbor
 
 class InMemoryNeighborDataSource : NeighborDatasource {

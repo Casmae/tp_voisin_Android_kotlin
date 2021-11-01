@@ -2,7 +2,7 @@ package fr.mbds.android.repositories
 
 import android.app.Application
 import androidx.lifecycle.LiveData
-import fr.mbds.android.dal.room.NeighborDatasource
+import fr.mbds.android.dal.NeighborDatasource
 import fr.mbds.android.dal.room.RoomNeighborDataSource
 import fr.mbds.android.models.Neighbor
 
