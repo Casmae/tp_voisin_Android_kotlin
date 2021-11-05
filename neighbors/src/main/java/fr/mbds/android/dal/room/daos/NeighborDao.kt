@@ -2,10 +2,10 @@ package fr.mbds.android.dal.room.daos
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import fr.mbds.android.dal.room.entities.NeighborEntity
-import fr.mbds.android.models.Neighbor
 
 @Dao
 interface NeighborDao {
@@ -13,5 +13,8 @@ interface NeighborDao {
     fun getNeighbors(): LiveData<List<NeighborEntity>>
 
     @Insert
-    fun insertAll(neighbors: MutableList<NeighborEntity>)
+    fun insert(neighbor: NeighborEntity)
+
+    @Delete
+    fun remove(neighbor: NeighborEntity)
 }

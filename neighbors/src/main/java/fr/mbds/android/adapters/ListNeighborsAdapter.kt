@@ -11,8 +11,8 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import fr.mbds.android.neighbors.R
 import fr.mbds.android.models.Neighbor
+import fr.mbds.android.neighbors.R
 
 class ListNeighborsAdapter(
     items: List<Neighbor>,

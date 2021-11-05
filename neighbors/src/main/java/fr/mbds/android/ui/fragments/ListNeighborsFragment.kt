@@ -67,8 +67,7 @@ class ListNeighborsFragment : Fragment(), ListNeighborHandler {
 
     override fun onDeleteNeighbor(neighbor: Neighbor) {
         val application: Application = activity?.application ?: return
-
-        NeighborRepository.getInstance(application).delete(neighbor)
+        viewModel.delete(neighbor)
     }
 
     private fun setData() {

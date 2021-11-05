@@ -12,4 +12,8 @@ class RepositoryViewModel : ViewModel() {
     // On fait passe plat sur le résultat retourné par le repository
     val neighbors: LiveData<List<Neighbor>>
         get() = repository.getNeighbours()
+
+    fun delete(neighbor: Neighbor) {
+        repository.delete(neighbor)
+    }
 }
