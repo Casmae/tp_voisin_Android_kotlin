@@ -1,8 +1,9 @@
 <resources>
-    <string name="app_name">Neighbors</string>
-    <string name="deleteNeighborMessage">"Voulez-vous vraiment supprimer ce voisin ?"</string>
-    <string name="yes">Oui</string>
-    <string name="no">Non</string>
+    <string name="app_name">Voisins</string>
+    <string name="deleteNeighborMessage">Voulez-vous vraiment supprimer ce voisin ?</string>
+    <string name="neighborAlert">Alerte Voisin</string>
+    <string name="yes">SUPPRIMER</string>
+    <string name="no">ANNULER</string>
     <string name="hint_address">Adresse</string>
     <string name="hint_image">Image</string>
     <string name="hint_name">Nom</string>
@@ -10,12 +11,12 @@
     <string name="hint_website">Site Web</string>
     <string name="hint_aboutMe">A propos de moi</string>
     <string name="save_button">Enregistrer</string>
-    <string name="invalid_email">address Mail Invalide</string>
+    <string name="invalid_email">adresse mail invalide</string>
+    <string name="invalid_phone">Le format doit contenir 0X XX XX XX XX</string>
+    <string name="invalid_image">URL d\'image invalide</string>
+    <string name="invalid_url">URL invalide</string>
     <string name="listNeighbors_title">Liste des voisins</string>
     <string name="addNeighbor_title">Nouveau Voisin</string>
-
-
-
 
 
 </resources>

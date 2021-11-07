@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Neighbors</string>
+    <string name="deleteNeighborMessage">Delete selected Item ?</string>
+    <string name="neighborAlert">Neighbor Alert</string>
+    <string name="yes">DELETE</string>
+    <string name="no">CANCEL</string>
+    <string name="hint_address">Address</string>
+    <string name="hint_image">Profile photo</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_phone">Phone</string>
+    <string name="hint_website">Web site</string>
+    <string name="hint_aboutMe">About Me</string>
+    <string name="save_button">Save</string>
+    <string name="invalid_email">Address mail invalid</string>
+    <string name="invalid_phone">Format must be 0X XX XX XX XX</string>
+    <string name="invalid_image">Invalid Image URL</string>
+    <string name="invalid_url">Invalid URL</string>
+    <string name="listNeighbors_title">List Neighbors</string>
+    <string name="addNeighbor_title">New Neighbor</string>
+
+
+
+
+
+</resources>

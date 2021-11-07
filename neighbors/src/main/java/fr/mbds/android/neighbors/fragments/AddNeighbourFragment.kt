@@ -110,17 +110,17 @@ class AddNeighbourFragment : Fragment(), TextWatcher {
 
         val phoneNumberValid: Boolean = isValidPhoneNumber(phone.text)
         if (!phoneNumberValid && phone_not_null) {
-            phone.setError("Format must be 0X XX XX XX XX")
+            phone.error = getString(R.string.invalid_phone)
         }
 
         val imageUrlValid: Boolean = isValidUrl(image.text)
         if (!imageUrlValid && image_not_null) {
-            image.setError("Invalid image URL")
+            image.error = getString(R.string.invalid_image)
         }
 
         val websiteUrlValid: Boolean = isValidUrl(webSite.text)
         if (!websiteUrlValid && website_not_null) {
-            webSite.setError("Invalid URL")
+            webSite.error = getString(R.string.invalid_url)
         }
 
         addNeighbor.isEnabled =

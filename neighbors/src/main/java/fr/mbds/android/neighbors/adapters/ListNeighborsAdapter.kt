@@ -40,22 +40,22 @@ class ListNeighborsAdapter(
         holder.mNeighbourName.text = neighbour.name
         holder.mDeleteButton.setOnClickListener {
             val alertDialogBuilder = AlertDialog.Builder(context)
-            alertDialogBuilder.setTitle("Neighbor Alert")
-            alertDialogBuilder.setMessage("Voulez-vous supprimer ce voisin ?")
+            alertDialogBuilder.setTitle(R.string.neighborAlert)
+            alertDialogBuilder.setMessage(R.string.deleteNeighborMessage)
 
-            alertDialogBuilder.setPositiveButton(android.R.string.yes) { dialog, which ->
+            alertDialogBuilder.setPositiveButton(R.string.yes) { dialog, which ->
                 Toast.makeText(
                     context,
-                    android.R.string.yes, Toast.LENGTH_SHORT
+                    R.string.yes, Toast.LENGTH_SHORT
                 ).show()
                 listNeighborHandler.onDeleteNeighbor(neighbour)
                 // on refresh
             }
 
-            alertDialogBuilder.setNegativeButton(android.R.string.no) { dialog, which ->
+            alertDialogBuilder.setNegativeButton(R.string.no) { dialog, which ->
                 Toast.makeText(
                     context,
-                    android.R.string.no, Toast.LENGTH_SHORT
+                    R.string.no, Toast.LENGTH_SHORT
                 ).show()
             }
             alertDialogBuilder.show()
