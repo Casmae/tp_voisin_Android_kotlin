@@ -17,6 +17,10 @@
     <string name="invalid_url">URL invalide</string>
     <string name="listNeighbors_title">Liste des voisins</string>
     <string name="addNeighbor_title">Nouveau Voisin</string>
+    <string name="memorySource">Source de données en mémoire</string>
+    <string name="roomSource">Source de données en BD</string>
+    <string name="roomSourceActive">Room Source Activé</string>
+    <string name="memorySourceActive">Source en mémoire activé</string>
 
 
 </resources>
