@@ -8,7 +8,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import fr.mbds.android.dal.memory.DUMMY_NeighborS
 import fr.mbds.android.dal.room.daos.NeighborDao
 import fr.mbds.android.dal.room.entities.NeighborEntity
-import toEntity
+import fr.mbds.android.dal.utils.toEntity
 import java.util.concurrent.Executors
 
 @Database(
