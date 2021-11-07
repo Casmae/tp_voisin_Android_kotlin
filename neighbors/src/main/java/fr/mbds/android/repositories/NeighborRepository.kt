@@ -13,7 +13,7 @@ class NeighborRepository private constructor(application: Application) {
     private val inMemoryDataSource: InMemoryNeighborDataSource = InMemoryNeighborDataSource()
 
     init {
-        dataSource = inMemoryDataSource
+        dataSource = roomDataSource
     }
 
     // Méthode qui retourne la liste des voisins
