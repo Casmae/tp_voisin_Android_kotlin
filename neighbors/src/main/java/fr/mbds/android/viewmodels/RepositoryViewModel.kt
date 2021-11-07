@@ -16,4 +16,8 @@ class RepositoryViewModel : ViewModel() {
     fun delete(neighbor: Neighbor) {
         repository.delete(neighbor)
     }
+
+    fun add(neighbor: Neighbor) {
+        repository.createNeighbour(neighbor)
+    }
 }

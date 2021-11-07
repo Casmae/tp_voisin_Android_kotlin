@@ -125,15 +125,15 @@ class AddNeighbourFragment : Fragment(), TextWatcher {
 
         addNeighbor.isEnabled =
             image_not_null &&
-                    name_not_null &&
-                    phone_not_null &&
-                    website_not_null &&
-                    addressMai_not_null &&
-                    aboutMe_not_null &&
-                    emailValid &&
-                    phoneNumberValid &&
-                    imageUrlValid &&
-                    websiteUrlValid
+            name_not_null &&
+            phone_not_null &&
+            website_not_null &&
+            addressMai_not_null &&
+            aboutMe_not_null &&
+            emailValid &&
+            phoneNumberValid &&
+            imageUrlValid &&
+            websiteUrlValid
     }
 
     fun isValidEmail(target: CharSequence?): Boolean {
@@ -142,12 +142,12 @@ class AddNeighbourFragment : Fragment(), TextWatcher {
 
     fun isValidPhoneNumber(target: CharSequence?): Boolean {
         return (
-                (
-                        (target.toString()).startsWith("07") ||
-                                (target.toString()).startsWith("06")
-                        ) &&
-                        target.toString().length == 10
-                )
+            (
+                (target.toString()).startsWith("07") ||
+                    (target.toString()).startsWith("06")
+                ) &&
+                target.toString().length == 10
+            )
     }
 
     fun isValidUrl(target: CharSequence?): Boolean {
@@ -156,7 +156,6 @@ class AddNeighbourFragment : Fragment(), TextWatcher {
 
     fun createNeighbour(neighbor: Neighbor) {
         val application: Application = activity?.application ?: return
-
         NeighborRepository.getInstance(application).createNeighbour(neighbor)
     }
 }

@@ -9,7 +9,6 @@ import fr.mbds.android.dal.utils.toEntity
 import fr.mbds.android.dal.utils.toNeighbor
 import fr.mbds.android.models.Neighbor
 
-
 class RoomNeighborDataSource(application: Application) : NeighborDatasource {
     private val database: NeighborDataBase = NeighborDataBase.getDataBase(application)
     private val dao: NeighborDao = database.neighborDao()
@@ -35,7 +34,9 @@ class RoomNeighborDataSource(application: Application) : NeighborDatasource {
     }
 
     override fun createNeighbour(neighbor: Neighbor) {
-        TODO("Not yet implemented")
+        Thread {
+            dao.insert(neighbor.toEntity())
+        }.start()
     }
 
     override fun updateFavoriteStatus(neighbor: Neighbor) {
