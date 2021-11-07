@@ -1,3 +1,5 @@
+package fr.mbds.android.dal.utils
+
 import fr.mbds.android.dal.room.entities.NeighborEntity
 import fr.mbds.android.models.Neighbor
 

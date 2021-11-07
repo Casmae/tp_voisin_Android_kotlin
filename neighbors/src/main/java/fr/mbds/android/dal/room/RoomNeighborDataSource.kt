@@ -5,9 +5,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import fr.mbds.android.dal.NeighborDatasource
 import fr.mbds.android.dal.room.daos.NeighborDao
+import fr.mbds.android.dal.utils.toEntity
+import fr.mbds.android.dal.utils.toNeighbor
 import fr.mbds.android.models.Neighbor
-import toEntity
-import toNeighbor
+
 
 class RoomNeighborDataSource(application: Application) : NeighborDatasource {
     private val database: NeighborDataBase = NeighborDataBase.getDataBase(application)
