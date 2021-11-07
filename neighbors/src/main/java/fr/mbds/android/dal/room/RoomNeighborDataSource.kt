@@ -6,6 +6,7 @@ import androidx.lifecycle.MediatorLiveData
 import fr.mbds.android.dal.NeighborDatasource
 import fr.mbds.android.dal.room.daos.NeighborDao
 import fr.mbds.android.models.Neighbor
+import toEntity
 import toNeighbor
 
 class RoomNeighborDataSource(application: Application) : NeighborDatasource {
@@ -27,7 +28,9 @@ class RoomNeighborDataSource(application: Application) : NeighborDatasource {
         get() = _neighors
 
     override fun deleteNeighbour(neighbor: Neighbor) {
-        TODO("Not yet implemented")
+        Thread {
+            dao.remove(neighbor.toEntity())
+        }.start()
     }
 
     override fun createNeighbour(neighbor: Neighbor) {

@@ -16,7 +16,6 @@ import fr.mbds.android.adapters.ListNeighborsAdapter
 import fr.mbds.android.models.Neighbor
 import fr.mbds.android.neighbors.R
 import fr.mbds.android.neighbors.databinding.ListNeighborsFragmentBinding
-import fr.mbds.android.repositories.NeighborRepository
 import fr.mbds.android.viewmodels.RepositoryViewModel
 
 class ListNeighborsFragment : Fragment(), ListNeighborHandler {
